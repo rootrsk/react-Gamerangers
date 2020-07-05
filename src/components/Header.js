@@ -1,15 +1,15 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 const Header = () =>(
-    <div>
-        <h1>GameRangers</h1>
-        <NavLink to='/' >Home</NavLink>
-        <NavLink to='/help'>Help</NavLink>
-        <NavLink to='/about'>About</NavLink>
-        <NavLink to='login' >Login</NavLink>
-        <NavLink to='signup' >Signup</NavLink>
+    <div className="header_nav">
+        <NavLink activeClassName="active-menu" className="what" to='/'   exact  >Home</NavLink>
+        <NavLink activeClassName="active-menu" className="what" to='/help' >Help</NavLink>
+        <NavLink activeClassName="active-menu" className="what" to='login'>Login</NavLink>
+        <NavLink activeClassName="active-menu" className="what" to='signup'>Signup</NavLink>
+        <NavLink activeClassName="active-menu" className="what"to='/admin/dashboard'>Admin</NavLink>
     </div>
 )
 
-export default  Header
+export default connect()(Header)

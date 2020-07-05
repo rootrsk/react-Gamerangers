@@ -1,17 +1,37 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
-import {LoadingComponened10} from './others/LoadingPage'
+import LoadingComponent from '../LoadingAnimation'
+import { connect } from 'react-redux'
+import {LoadingComponened10} from '../others/LoadingPage'
 
-class SignupFrom extends React.Component{
+
+
+
+
+
+class ProfileEdit extends React.Component{
     state = {}
-    componentDidMount = () =>{
-        const token = document.cookie.includes('token')
-        if(token){
-            this.setState({
-                message:'successful'
-            })
+    componentDidMount = async() =>{
+        const response = await axios({
+            url:'/user/me',
+            method:'get',
+        })
+        this.setState({
+            response
+        })
+        
+
+        if(response.data.authentication!=='loggedin'){
+
         }
+        const user = response.data.user
+        await this.setState({
+            name:user.name,
+            email:user.email,
+            contact_no: user.contact_no,
+            city : user.city
+        })
     }
     onNameChange = (e) =>{
         const name = e.target.value
@@ -35,36 +55,38 @@ class SignupFrom extends React.Component{
         this.setState({password})
     }
     onSubmit = async(e) =>{
-        this.setState({button:'clicked'})
         e.preventDefault()
+        this.setState({button:'clicked'})
         const data = {
             name:this.state.name,
             email:this.state.email,
             city:this.state.city,
-            contact_no:this.state.contact_no,
-            password : this.state.password
+            contact_no:this.state.contact_no
         }
+        console.log(this.state)
         const response = await axios({
-            url:'/user/signup',
-            method:'POST',
+            url:'/user/profile',
+            method:'patch',
             data:data
-            
         })
-        this.setState({
+        console.log(response)
+        await this.setState({
             error:response.data.error,
             message : response.data.message
         })
+        if(this.state.error) this.setState({button:''})
 
     }
     render(){
         return(
-            <div className='form'> 
+            <div className='form'>
                 <form onSubmit={this.onSubmit} method='POST' >
                     <input 
                         type='text' 
-                        name='Name' 
+                        name='name' 
                         placeholder='name'
                         onChange={this.onNameChange}
+                        defaultValue={this.state.name}
                         required
                     />
                     <input 
@@ -72,12 +94,14 @@ class SignupFrom extends React.Component{
                         name='email' 
                         placeholder='email'
                         onChange={this.onEmailChange} 
+                        defaultValue={this.state.email}
                         required
                     />
                     <input type='number' 
                         name='contact_no' 
                         placeholder="contact number"
                         onChange={this.onContactNumberChange}
+                        defaultValue={this.state.contact_no}
                         required 
                     />
                     <input 
@@ -85,23 +109,37 @@ class SignupFrom extends React.Component{
                         name='city' 
                         placeholder='city' 
                         onChange = {this.onCityChange}
+                        defaultValue={this.state.city}
                         required
                     />
-                    <input 
-                        type='password' 
-                        name='password' 
-                        placeholder='password'
-                        onChange = {this.onPasswordChange}
-                        required 
-                    />
-                    {this.state.message==='successful' ? <Redirect to='/user/dashboard' /> : <p     className='error'>
+                    {this.state.message==='successful' ? <Redirect to='/user/profile' /> : <p className='error'>
                         {this.state.error}
                     </p>}
-                    <button className='submit-button'>{this.state.button==='clicked'?<LoadingComponened10 />:<p>SignUp</p>} </button>
+                    {(()=>{
+                        if(this.props.user.user.authentication==='loggedin') 
+                            return 
+                        else if(this.props.user.user.error)
+                            return <p>HAVE SOME EROROR</p>
+                        else if(this.props.user.user.authentication==='loggedout')
+                            return <Redirect to='/login' />
+                        else
+                            return <LoadingComponent />
+                    })()}
+
+                    <button className='submit-button'>
+                        {this.state.button==='clicked'?<LoadingComponened10 /> : <p>Update</p>}
+                    </button>
                 </form>
             </div>
         )
     }
 }
 
-export default SignupFrom
+const mapStateToProps = (state) =>{
+    return {
+        user: state.user
+    }
+}
+
+
+export default connect(mapStateToProps)(ProfileEdit)
