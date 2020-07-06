@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
@@ -15,7 +18,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test --env=jsdom",   
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -33,18 +36,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://rootrsk-gamerangers-api.herokuapp.com/",
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
-  "main": "index.js",
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rootrsk/react-Gamerangers.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/rootrsk/react-Gamerangers/issues"
-  },
-  "homepage": "https://github.com/rootrsk/react-Gamerangers#readme"
+  "proxy": "https://rootrsk-gamerangers-api.herokuapp.com/"
 }
