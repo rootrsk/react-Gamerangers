@@ -1,5 +1,5 @@
 {
-  "name": "index",
+  "name": "gamerangers",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -33,5 +33,18 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://rootrsk-gamerangers-api.herokuapp.com/"
+  "proxy": "https://rootrsk-gamerangers-api.herokuapp.com/",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rootrsk/react-Gamerangers.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rootrsk/react-Gamerangers/issues"
+  },
+  "homepage": "https://github.com/rootrsk/react-Gamerangers#readme"
 }
