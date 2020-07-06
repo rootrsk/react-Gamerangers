@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, useRouteMatch, Switch, withRouter } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 
 import Error404 from './../Error404'
 import Dashboard from './Dashboard'

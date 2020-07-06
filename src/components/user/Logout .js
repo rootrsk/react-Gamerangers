@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { Redirect, withRouter, Route } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 class Logout extends React.Component{

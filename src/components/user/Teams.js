@@ -1,5 +1,5 @@
 import React from 'react' 
-import { Switch, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import Solo from '../Team/SoloTeam'
 import Duo from '../Team/DuoTeam'
 import Squad from '../Team/SquadTeam'

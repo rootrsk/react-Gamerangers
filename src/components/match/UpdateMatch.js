@@ -1,18 +1,7 @@
 import React from 'react'
 import axios from 'axios'
-import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-
-const post = async(props) =>{
-    
-    const response = await axios({
-        url:'/admin/:',
-        method:'post',
-        data:props
-    })
-    return response.data
-}
 
 
 class UpdateMatch extends React.Component{

@@ -1,6 +1,5 @@
 import React from 'react'
-import axios from 'axios'
-import { Redirect, NavLink, Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import LoadingComponent from '../others/LoadingPage'
 

@@ -1,6 +1,6 @@
 import React from 'react' 
 
-import Matches from './Matches'
+// import Matches from './Matches'
 import Profile from './DisplayProfile'
 import UpcomingMatches from '../match/UpComingMatch'
 

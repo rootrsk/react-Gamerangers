@@ -73,8 +73,5 @@ class Login extends React.Component{
     }
 }
 
-const mapStateToProps = (state) =>{
-
-}
 
 export default connect()(Login) 
